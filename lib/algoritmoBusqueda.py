@@ -32,7 +32,7 @@ class Grafo:
     
     """
 
-    def __init__(self, num_de_nodos, dirigido=True):
+    def __init__(self, num_de_nodos, bordes, dirigido=True):
         """
         Construye todo los atributos necesarios para el objeto Grafo.
 
@@ -40,15 +40,20 @@ class Grafo:
         ----------
             num_de_nodos : int
                 Numero de nodos de grafo
+            bordes: Array
+                Array de tuplas con cada borde del arbol a contruir
+                [(nodo1,nodo2,peso),(nodo2,nodo3,peso),(nodo1,nodo3,peso),...]
             dirigido : bool
                 Estado de dirigido
         """
-
+        #Creacion de variables de clase
         self.m_num_de_nodos = num_de_nodos
         self.m_nodos = range(self.m_num_de_nodos) #Rango con numero de nodos
         self.m_dirigido = dirigido
         self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}# Usamos un diccionario para implementar una lista de adyacencia      
-	
+        # Creacion de Arbol
+        self.crear_arbol(bordes)
+
     def agregar_borde(self, nodo1, nodo2, peso=1):
         """
         Agrega un borde al Grafo
@@ -76,6 +81,31 @@ class Grafo:
             # Agregar nodo 1 a lista en nodo2
             self.m_lista_adyacencia[nodo2].add((nodo1, peso))
     
+    def crear_arbol(self,bordes):
+        """
+        Crea arbol del grafo
+        Se ingresa un Array de Tuplas de cada borde a ingresar
+        Se llama iterativamente agregar_borde(nodo1,nodo2,peso) para agregar todos lo bordes
+
+        Parametros
+        ----------
+        bordes: Array
+            Array de tuplas con cada borde del arbol a contruir
+            [(nodo1,nodo2,peso),(nodo2,nodo3,peso),(nodo1,nodo3,peso),...]
+
+        Retorna
+        -------
+        None
+        """
+        for borde in bordes:
+            nodo1 = borde[0]
+            nodo2 = borde[1]
+            peso = borde[2]
+            self.agregar_borde(nodo1,nodo2,peso)
+
+        
+
+
     def imprimir_lista_adyacente(self):
         """
         Imprime la representación gráfica
@@ -97,11 +127,13 @@ class Grafo:
     def bfs_transversal(self, nodo_inicial,objetivo):
         """
         Imprime el recorrido BFS de un vértice fuente dado y atraviesa vértices alcanzables desde s.
-
+        Se detiene al alcanzar su objetivo
         Parametros
         ----------
         nodo_inicial : int
             Nodo inicial del Grafo a imprimir
+        objetivo: int
+            Nodo final de busqueda
 
         Retorna
         -------
