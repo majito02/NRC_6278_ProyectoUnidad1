@@ -177,7 +177,7 @@ class Grafo:
         Recorrido de nodos y peso total  [0 1 2 4 3 ...], peso_total
         """
         peso_total =0
-        ruta = self.buscar_dfs(inicio, objetivo)
+        ruta = self.buscar_dfs(inicio, objetivo,[],set())
         for i in  range(len(ruta)-1):
             for nodo_vecino in self.m_lista_adyacencia[ruta[i]]:
                 if nodo_vecino[0] == ruta[i+1]:

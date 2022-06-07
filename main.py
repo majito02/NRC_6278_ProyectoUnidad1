@@ -2,6 +2,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import time
+#Importacionde la clase Grafo del paquete AlgortimoBusqueda
+from lib.algoritmoBusqueda import Grafo
 
 # Importacion paquete sys
 import sys
@@ -54,7 +56,7 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
                     self.nodo_16, self.nodo_17, self.nodo_18, self.nodo_19, self.nodo_20,
                     self.nodo_21]
         # Paso de simulacion
-        self.paso_simulacion = 3
+        self.paso_simulacion = 1 #Segundos
 
         #Eventos de los botones q reprentan los nodos
         self.nodo.clicked.connect(self.eleccion_puntos)
@@ -82,6 +84,19 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         self.boton_generar.clicked.connect(self.generar_ruta)
         #Evento de Boton Reiniciar
         self.boton_reiniciar.clicked.connect(self.reiniciar)
+
+        #Inicializacion de arbol y nodos
+        self.bordes_nodos = [(1,2,3.55),(1,3,3.64),(2,7,0.82),(2,8,4.62),
+            (3,6,2.39),(3,4,2.57),(3,5,2.63),(4,11,1.96),
+            (5,11,1.02),(5,12,1.65),(5,17,2.06),(5,6,3.20),(5,13,3.82),
+            (6,13,2.30),(6,7,2.36),(6,8,3.55),(6,16,6.81),
+            (8,9,0.5),(9,10,2.23),(11,12,1),(12,17,1.5),
+            (13,14,1),(13,18,2.77),(13,17,4.49),(14,15,1.5),
+            (14,18,2.08),(15,18,2.70),(15,16,2.97),(17,19,1.62),
+            (17,18,3.88),(18,20,2.45),(18,19,4.72),(19,21,2.90)]
+        #Creacion de Grafo
+        self.grafo = Grafo(21, self.bordes_nodos,dirigido=False)
+
 
     def eleccion_puntos(self):
         '''
@@ -139,12 +154,17 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         '''
         #sms de inicio
         print("Calculando ruta")
-        """
         #Algoritmo de Ruta
-        ruta, distancia = calcula_ruta
+        ruta = []
+        distancia = 0
+        print(self.nodo_inicial, self.nodo_final)
+        [ruta, distancia]=self.grafo.obtener_ruta(int(self.nodo_inicial),int(self.nodo_final))
+        print(ruta)
+        print(distancia)
         #Simulacion de ruta
-        self.simulacion_ruta(ruta)
-        """
+        self.simular_ruta(ruta,distancia)
+        #Creacion de Grafo
+        self.grafo = Grafo(21, self.bordes_nodos,dirigido=False)
         
     
     def reiniciar(self):
@@ -169,7 +189,7 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         self.distancia.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.distancia.setText("")
 
-    def simular_ruta(self, ruta):
+    def simular_ruta(self, ruta, distancia):
         '''
 		
         Simula ruta generado cambiando los colores de los nodos que pasan la ruta
@@ -183,19 +203,18 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         None
         
         '''
-        """
         # Verificar cada punto de ruta con cada nodo
         for i in ruta:
             for j in self.nodos:
-                if int(j.text()) == i:
+                if int(j.text()) == i and int(j.text()) != ruta[0]:
                     j.setStyleSheet("background-color: rgb(0, 0, 255);")
-                    time.sleep(self.paso_simulacion)
+                    #time.sleep(self.paso_simulacion)
         #Mostrar distancia en ventana
-        self.distancia.setText(distancia)
+        self.distancia.setText(str(distancia))
         # Resaltar etiqueta de distancia
         self.distancia.setStyleSheet("background-color: rgb(0, 255, 0);")
-        """
-        pass
+
+
 
 
 #Correr programa si este es la raiz de ejecucion
