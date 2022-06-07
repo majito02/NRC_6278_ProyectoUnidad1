@@ -127,7 +127,7 @@ background-color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>-10</x>
-      <y>0</y>
+      <y>-10</y>
       <width>1000</width>
       <height>610</height>
      </rect>
@@ -145,10 +145,13 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/img/nodos_mapa.png);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>img/nodos_mapa.png</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="nodo">
@@ -183,7 +186,7 @@ background-color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="nodo_2">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>300</x>
       <y>50</y>
       <width>20</width>
       <height>20</height>
@@ -270,7 +273,7 @@ background-color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="nodo_5">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>250</x>
       <y>260</y>
       <width>20</width>
       <height>20</height>
@@ -789,8 +792,6 @@ background-color: rgb(255, 255, 255);</string>
    <zorder>nodo_21</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="img/imagen.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
