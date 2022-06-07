@@ -48,7 +48,7 @@ class Grafo:
         """
         #Creacion de variables de clase
         self.m_num_de_nodos = num_de_nodos
-        self.m_nodos = range(self.m_num_de_nodos) #Rango con numero de nodos
+        self.m_nodos = range(1,self.m_num_de_nodos+1) #Rango con numero de nodos
         self.m_dirigido = dirigido
         self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}# Usamos un diccionario para implementar una lista de adyacencia      
         # Creacion de Arbol
