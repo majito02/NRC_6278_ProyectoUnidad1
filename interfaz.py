@@ -1,25 +1,60 @@
-# -*- coding: utf-8 -*-
+"""
+        
+Archivo generado con ayuda de QtDesigner5
+Crear la interfaz gráfica de aplicación
+Clases:
+        Ui_ventanaPrincipal
+Metodos:
+		setupUi
+        retranslateUi
+"""
 
-# Form implementation generated from reading ui file 'interfaz.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
-
-
+# Importacion de libreria PyQt5 para generacion de interfaz gráfica
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ventanaPrincipal(object):
+class Ui_ventanaPrincipal(object): #Uso de object para no aceptar argumentos
+    '''
+    Clase que representa la ventana de interfaz grafica
+
+    Attributos
+    ----------
+    None
+
+    Methodos
+    -------
+	setupUi(self, ventanaPrincipal):
+		Construir estructura de la ventana grafica
+    etranslateUi(self, ventanaPrincipal):
+        Inicializa texto delos elementos que se encuentran en la ventana
+    '''
+
     def setupUi(self, ventanaPrincipal):
+        '''
+		
+        Estructura y crea la ventana principal.
+
+        Parametros
+        ----------
+        ventanaPrincipal : QtWidgets.QMainWindow()
+            Objeto de la clase QMainWindows del paquete QtWidgets
+
+        Returno
+        -------
+        None
+        
+		'''
+		# Da propiedades de la ventana principal
         ventanaPrincipal.setObjectName("ventanaPrincipal")
         ventanaPrincipal.resize(985, 600)
         ventanaPrincipal.setMinimumSize(QtCore.QSize(985, 600))
         ventanaPrincipal.setMaximumSize(QtCore.QSize(985, 600))
         ventanaPrincipal.setStyleSheet("\n"
 "background-color: rgb(255, 255, 255);")
+		# Crea un widget central para contener elementos y dar nombre
         self.centralwidget = QtWidgets.QWidget(ventanaPrincipal)
         self.centralwidget.setObjectName("centralwidget")
+		# Crear botones con sus propiedades
         self.boton_generar = QtWidgets.QPushButton(self.centralwidget)
         self.boton_generar.setGeometry(QtCore.QRect(0, 560, 101, 25))
         self.boton_generar.setStyleSheet("background-color: rgb(138, 226, 52);")
@@ -28,6 +63,7 @@ class Ui_ventanaPrincipal(object):
         self.boton_reiniciar.setGeometry(QtCore.QRect(110, 560, 89, 25))
         self.boton_reiniciar.setStyleSheet("background-color: rgb(239, 41, 41);")
         self.boton_reiniciar.setObjectName("boton_reiniciar")
+		# Crear etiqueta  con texto distancia
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(220, 560, 81, 17))
         self.label.setStyleSheet("background-color: rgb(255, 255, 255);")
@@ -35,8 +71,10 @@ class Ui_ventanaPrincipal(object):
         self.distancia = QtWidgets.QLabel(self.centralwidget)
         self.distancia.setEnabled(True)
         self.distancia.setGeometry(QtCore.QRect(290, 560, 67, 17))
+        # Crea un tipo de fuente para texto
         font = QtGui.QFont()
         font.setKerning(True)
+		#Crea etiqueta  donde se observera la distancia recorrida
         self.distancia.setFont(font)
         self.distancia.setToolTip("")
         self.distancia.setStyleSheet("background-color: rgb(238, 238, 236);\n"
@@ -44,10 +82,12 @@ class Ui_ventanaPrincipal(object):
 "background-color: rgb(255, 255, 255);")
         self.distancia.setText("")
         self.distancia.setObjectName("distancia")
+		#Crear etiqueta para texto km
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(360, 560, 21, 17))
         self.label_3.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.label_3.setObjectName("label_3")
+		#Crear contenedor de imagen
         self.contenedor_imagen = QtWidgets.QLabel(self.centralwidget)
         self.contenedor_imagen.setGeometry(QtCore.QRect(-10, -10, 1000, 610))
         self.contenedor_imagen.setMinimumSize(QtCore.QSize(1000, 610))
@@ -56,6 +96,7 @@ class Ui_ventanaPrincipal(object):
         self.contenedor_imagen.setText("")
         self.contenedor_imagen.setPixmap(QtGui.QPixmap("img/nodos_mapa.png"))
         self.contenedor_imagen.setObjectName("contenedor_imagen")
+		#Creacion de los nodos como botones
         self.nodo = QtWidgets.QPushButton(self.centralwidget)
         self.nodo.setGeometry(QtCore.QRect(140, 60, 20, 20))
         self.nodo.setMinimumSize(QtCore.QSize(20, 20))
@@ -203,6 +244,7 @@ class Ui_ventanaPrincipal(object):
         self.nodo_21.setStyleSheet("border-radius : 50;\n"
 "background-color: rgb(255, 255, 255);")
         self.nodo_21.setObjectName("nodo_21")
+		#Levantar elementos creados
         self.contenedor_imagen.raise_()
         self.boton_generar.raise_()
         self.boton_reiniciar.raise_()
@@ -230,14 +272,31 @@ class Ui_ventanaPrincipal(object):
         self.nodo_19.raise_()
         self.nodo_20.raise_()
         self.nodo_21.raise_()
+		# Dar contenedor padre a objeto creado
         ventanaPrincipal.setCentralWidget(self.centralwidget)
-
+		# Inicializar el texto de cada elemento
         self.retranslateUi(ventanaPrincipal)
+		# Iniciar ventana
         QtCore.QMetaObject.connectSlotsByName(ventanaPrincipal)
 
     def retranslateUi(self, ventanaPrincipal):
+        """
+        Inicializa el texto de cada elemento creado
+
+        Parametros
+        ----------
+        ventanaPrincipal : QtWidgets.QMainWindow()
+            Objeto de la clase QMainWindows del paquete QtWidgets
+
+        Retorno
+        -------
+        None
+        """
+		#variable para idioma
         _translate = QtCore.QCoreApplication.translate
+		# Nombre de titulo de ventana
         ventanaPrincipal.setWindowTitle(_translate("ventanaPrincipal", "Santo Domingo - Rutas"))
+		#Texto de elementos ingresados
         self.boton_generar.setText(_translate("ventanaPrincipal", "Calcular Ruta"))
         self.boton_reiniciar.setText(_translate("ventanaPrincipal", "Reiniciar"))
         self.label.setText(_translate("ventanaPrincipal", "Distancia: "))
@@ -264,7 +323,7 @@ class Ui_ventanaPrincipal(object):
         self.nodo_20.setText(_translate("ventanaPrincipal", "20"))
         self.nodo_21.setText(_translate("ventanaPrincipal", "21"))
 
-
+#Funcion de corrida si se habre desde esta venta - para test
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
