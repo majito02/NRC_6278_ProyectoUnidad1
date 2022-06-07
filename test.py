@@ -12,5 +12,5 @@ bordes_nodos = [(1,2,3.55),(1,3,3.64),(2,7,0.82),(2,8,4.62),
             (17,18,3.88),(18,20,2.45),(18,19,4.72),(19,21,2.90)]
 grafo = Grafo(21, bordes_nodos,dirigido=False)
 
-grafo.obtener_ruta(1,8)
-grafo.obtener_ruta(1,8)
+print(grafo.obtener_ruta(1,8))
+print(grafo.obtener_ruta(1,8))
