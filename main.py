@@ -182,6 +182,8 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         self.contador = 0
         #Mostrar distancia en ventana
         self.distancia.setText(str(round(distancia,2)))
+        #Mostrar ruta
+        self.ruta_contenedor.setText(str(ruta))
         
         
     
@@ -206,6 +208,8 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
             i.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.distancia.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.distancia.setText("")
+        self.ruta_contenedor.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ruta_contenedor.setText("")
 
     def simular_ruta(self):
         '''
@@ -227,6 +231,7 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         if self.simulacion_activada == 1 and self.contador == len(self.nodos_simulacion):
             # Resaltar etiqueta de distancia
             self.distancia.setStyleSheet("background-color: rgb(0, 255, 0);")
+            self.ruta_contenedor.setStyleSheet("background-color: rgb(0, 255, 0);")
             self.simulacion_activada = 0
             self.contador = 0
 

@@ -743,6 +743,51 @@ background-color: rgb(255, 255, 255);</string>
      <string>21</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>560</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Ruta:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ruta_contenedor">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>560</y>
+      <width>361</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(238, 238, 236);
+selection-background-color: rgb(252, 233, 79);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>contenedor_imagen</zorder>
    <zorder>boton_generar</zorder>
    <zorder>boton_reiniciar</zorder>
@@ -770,6 +815,8 @@ background-color: rgb(255, 255, 255);</string>
    <zorder>nodo_19</zorder>
    <zorder>nodo_20</zorder>
    <zorder>nodo_21</zorder>
+   <zorder>label_2</zorder>
+   <zorder>ruta_contenedor</zorder>
   </widget>
  </widget>
  <resources/>
