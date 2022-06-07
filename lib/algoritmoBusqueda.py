@@ -23,13 +23,23 @@ class Grafo:
     -------
     agregar_borde(nodo1, nodo2, peso=1):
          Agregar borde al gráfico.
-    
+
+    crear_arbol(self,bordes):
+        Crea el arbol segun el Array de nodos ingresado llamando al metodo agregar_borde
+
     imprimir_lista_adyacente():
         Imprimir la representación gráfica
-
-    bfs_transversal(nodo_inicial):
-         Imprimir el recorrido BFS de un vértice fuente dado.
     
+     buscar_dfs(self, inicio, objetivo, ruta = [], visitado = set()):
+        Retorna la ruta desde un nodo inicial al final
+        usa busqueda en profundidad
+
+    buscar_bfs(nodo_inicial):
+        Retorna el recorrido BFS de un vértice fuente dado.
+        Usa busqueda transversal
+
+    def obtener_ruta(self,inicio, objetivo):
+        Retorna ruta y distancia usando busqueda_bfs
     """
 
     def __init__(self, num_de_nodos, bordes, dirigido=True):
@@ -47,6 +57,7 @@ class Grafo:
                 Estado de dirigido
         """
         #Creacion de variables de clase
+        self.peso_total = 0 #peso total recorido
         self.m_num_de_nodos = num_de_nodos
         self.m_nodos = range(1,self.m_num_de_nodos+1) #Rango con numero de nodos
         self.m_dirigido = dirigido
@@ -101,10 +112,8 @@ class Grafo:
             nodo1 = borde[0]
             nodo2 = borde[1]
             peso = borde[2]
+            print(nodo1,nodo2,peso)
             self.agregar_borde(nodo1,nodo2,peso)
-
-        
-
 
     def imprimir_lista_adyacente(self):
         """
@@ -118,15 +127,69 @@ class Grafo:
         -------
         nodo$(llave): {m_lista_adyacencia[llave]}
         """
-
         #Recorrer por la lista de adyacencia
         for llave in self.m_lista_adyacencia.keys():
             # Imprimir nodo
             print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
 
-    def bfs_transversal(self, nodo_inicial,objetivo):
+    def buscar_dfs(self, inicio, objetivo, ruta = [], visitado = set()):
         """
-        Imprime el recorrido BFS de un vértice fuente dado y atraviesa vértices alcanzables desde s.
+        Devuelve el recorrido DFS de un vérticedado y atraviesa vértices alcanzables.
+        Se detiene al alcanzar su objetivo
+        Parametros
+        ----------
+        inicio : int
+            Nodo inicial del Grafo a imprimir
+        objetivo: int
+            Nodo final de busqueda
+        ruta : array
+            arreglo donde se guarda la ruta
+        visitado : set()
+            auxiliar para nodos visitados
+
+        Retorna
+        -------
+        Recorrido de nodos  [0 1 2 4 3 ...]
+        """
+        ruta.append(inicio)
+        visitado.add(inicio)
+        if inicio == objetivo:
+            return ruta
+        for (vecino, peso) in self.m_lista_adyacencia[inicio]:
+            if vecino not in visitado:
+                resultado= self.busqueda_dfs(vecino, objetivo, ruta, visitado)
+                if resultado is not None:
+                    return resultado
+        ruta.pop()
+        return None
+
+    def obtener_ruta(self,inicio, objetivo):
+        """
+        Devuelve la ruta y peso total de la busqueda
+        Parametros
+        ----------
+        inicio : int
+            Nodo inicial del Grafo a imprimir
+        objetivo: int
+            Nodo final de busqueda
+
+        Retorna
+        -------
+        Recorrido de nodos y peso total  [0 1 2 4 3 ...], peso_total
+        """
+        peso_total =0
+        ruta = self.buscar_dfs(inicio, objetivo)
+        print(ruta)
+        for i in  range(len(ruta)-1):
+            for nodo_vecino in self.m_lista_adyacencia[ruta[i]]:
+                if nodo_vecino[0] == ruta[i+1]:
+                    peso += nodo_vecino[1]
+        return [ruta,peso_total]
+
+
+    def buscar_bfs(self, nodo_inicial,objetivo):
+        """
+        Devuelve el recorrido BFS de un vértice fuente dado y atraviesa vértices alcanzables desde s.
         Se detiene al alcanzar su objetivo
         Parametros
         ----------
@@ -155,7 +218,6 @@ class Grafo:
             print(nodo_actual, end = " ")
             ruta.append(nodo_actual)
             if nodo_actual == objetivo:
-                print("encontrado")
                 return ruta
             # Obtener todos los vértices adyacentes del vértice eliminado. 
             for (siguiente_nodo, peso) in self.m_lista_adyacencia[nodo_actual]:
