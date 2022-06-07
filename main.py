@@ -1,5 +1,8 @@
 #importacion de clase QtWidgets de libreria PyQt5
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+import time
+
 # Importacion paquete sys
 import sys
 # Importacion la ventana generada con QtDesigner5 como clase
@@ -36,20 +39,172 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         # Inicializar ventana principal
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
         # Construir ventana con estructura base
-        self.setupUi(self) 
+        self.setupUi(self)
+        # Variable de conteo de seleccion de boton
+        self.botones_presionados = 0
+        # Variables de los nodos inicial y final
+        self.nodo_inicial = 0
+        self.nodo_final = 0
+        self.elemento_inicial = self.nodo
+        self.elemento_final = self.nodo
+        # Variables de los nodos
+        self.nodos = [self.nodo, self.nodo_2,self.nodo_3, self.nodo_4, self.nodo_5,
+                    self.nodo_6, self.nodo_7, self.nodo_8, self.nodo_9, self.nodo_10,
+                    self.nodo_11, self.nodo_12, self.nodo_13, self.nodo_14, self.nodo_15,
+                    self.nodo_16, self.nodo_17, self.nodo_18, self.nodo_19, self.nodo_20,
+                    self.nodo_21]
+        # Paso de simulacion
+        self.paso_simulacion = 3
+
+        #Eventos de los botones q reprentan los nodos
+        self.nodo.clicked.connect(self.eleccion_puntos)
+        self.nodo_2.clicked.connect(self.eleccion_puntos)
+        self.nodo_3.clicked.connect(self.eleccion_puntos)
+        self.nodo_4.clicked.connect(self.eleccion_puntos)
+        self.nodo_5.clicked.connect(self.eleccion_puntos)
+        self.nodo_6.clicked.connect(self.eleccion_puntos)
+        self.nodo_7.clicked.connect(self.eleccion_puntos)
+        self.nodo_8.clicked.connect(self.eleccion_puntos)
+        self.nodo_9.clicked.connect(self.eleccion_puntos)
+        self.nodo_10.clicked.connect(self.eleccion_puntos)
+        self.nodo_11.clicked.connect(self.eleccion_puntos)
+        self.nodo_12.clicked.connect(self.eleccion_puntos)
+        self.nodo_13.clicked.connect(self.eleccion_puntos)
+        self.nodo_14.clicked.connect(self.eleccion_puntos)
+        self.nodo_15.clicked.connect(self.eleccion_puntos)
+        self.nodo_16.clicked.connect(self.eleccion_puntos)
+        self.nodo_17.clicked.connect(self.eleccion_puntos)
+        self.nodo_18.clicked.connect(self.eleccion_puntos)
+        self.nodo_19.clicked.connect(self.eleccion_puntos)
+        self.nodo_20.clicked.connect(self.eleccion_puntos)
+        self.nodo_21.clicked.connect(self.eleccion_puntos)
+        # Evento de boton Generar Ruta
+        self.boton_generar.clicked.connect(self.generar_ruta)
+        #Evento de Boton Reiniciar
+        self.boton_reiniciar.clicked.connect(self.reiniciar)
+
+    def eleccion_puntos(self):
+        '''
+		
+        Verifica si se aplasto un boton.
+        Si el primero (self.botones_presionados == 0) se pone verde y se toma como nodo inicial
+        Si es el segundo (self.botones_presionados == 1) se pone rojo y se toma como nodo final
+        Si self.botones_presionados >= 2 no hace nada
+
+        Parametros
+        ----------
+        None
+
+        Returno
+        -------
+        None
+        
+        '''
+        #Verifica si se presiona un nodo por primera vez
+        if self.botones_presionados == 0:
+            #Se guarda el nodo inicial
+            self.nodo_inicial = int(self.sender().text())
+            #Se guardo el boton del nodo inicial
+            self.elemento_inicial = self.sender()
+            #Aumentar conteo de botones presionados
+            self.botones_presionados += 1
+            #Cambiar color de fondo de nodo inicial
+            self.elemento_inicial.setStyleSheet("background-color: rgb(0, 255, 0);")
+        #Verifica si se presiona un nodo por segunda vez
+        elif self.botones_presionados == 1:
+            #Se guarda el nodo final
+            self.nodo_final =  int(self.sender().text())
+            #Se guardo el boton del nodo inicial
+            self.elemento_final = self.sender()
+            #Cambiar color de fondo de nodo inicial
+            self.elemento_final.setStyleSheet("background-color: rgb(255, 0, 0);")
+            #Aumentar conteo de botones presionados
+            self.botones_presionados += 1
+        
+    def generar_ruta(self):
+        '''
+		
+        Calcula la ruta mediante un algoritmo de busqueda
+        Imprime en la etiqueta distancia la distancia total de la ruta
+        Encera valores llamdo a self.reiniciar
+
+        Parametros
+        ----------
+        None
+
+        Returno
+        -------
+        None
+        
+        '''
+        #sms de inicio
+        print("Calculando ruta")
+        """
+        #Algoritmo de Ruta
+        ruta, distancia = calcula_ruta
+        #Simulacion de ruta
+        self.simulacion_ruta(ruta)
+        """
+        
+    
+    def reiniciar(self):
+        '''
+		
+        Reinicia la accion, volviendo al color original los botones y encerando las variables
+
+        Parametros
+        ----------
+        None
+
+        Returno
+        -------
+        None
+        
+        '''
+        # Reiniciar conteo de botones aplastados
+        self.botones_presionados = 0
+        # Reiniciar color de fondo de los botones tomados
+        for i in self.nodos:
+            i.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.distancia.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.distancia.setText("")
+
+    def simular_ruta(self, ruta):
+        '''
+		
+        Simula ruta generado cambiando los colores de los nodos que pasan la ruta
+
+        Parametros
+        ----------
+        ruta: Array
+            arreglo con todos los nodos de la mejor ruta
+        Returno
+        -------
+        None
+        
+        '''
+        """
+        # Verificar cada punto de ruta con cada nodo
+        for i in ruta:
+            for j in self.nodos:
+                if int(j.text()) == i:
+                    j.setStyleSheet("background-color: rgb(0, 0, 255);")
+                    time.sleep(self.paso_simulacion)
+        #Mostrar distancia en ventana
+        self.distancia.setText(distancia)
+        # Resaltar etiqueta de distancia
+        self.distancia.setStyleSheet("background-color: rgb(0, 255, 0);")
+        """
+        pass
 
 
 #Correr programa si este es la raiz de ejecucion
 if __name__ == "__main__":
     # Evento de cierre de la ventana tomanod ruta de archivo ejecutado con sys
-    app = QtWidgets.QApplication(sys.argv)
-    # Crear objeto tipo ventana principal a partir de QtWidgets
-    ventana = QtWidgets.QMainWindow()
+    app = QtWidgets.QApplication([])
     # Crear objeto ventana de la clase generada
     ventana_principal = Ui_ventanaPrincipal()
-    # Instanciar el objecto de la clase generada con el objeto de tipo ventana principal
-    ventana_principal.setupUi(ventana)
     # Mostrar ventana principal
-    ventana.show()
+    ventana_principal.show()
     # Dar evento de fin de programa al cerrar ventana
-    sys.exit(app.exec_())
+    app.exec_()

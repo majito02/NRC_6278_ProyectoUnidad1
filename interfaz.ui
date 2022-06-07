@@ -176,8 +176,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>1</string>
@@ -205,8 +204,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>2</string>
@@ -234,8 +232,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>3</string>
@@ -263,8 +260,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>4</string>
@@ -292,8 +288,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>5</string>
@@ -321,8 +316,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>6</string>
@@ -350,8 +344,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>7</string>
@@ -379,8 +372,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>8</string>
@@ -408,8 +400,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>9</string>
@@ -437,8 +428,8 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);
+</string>
     </property>
     <property name="text">
      <string>10</string>
@@ -466,8 +457,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>11</string>
@@ -495,8 +485,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>12</string>
@@ -524,8 +513,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>13</string>
@@ -553,8 +541,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>14</string>
@@ -582,8 +569,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>15</string>
@@ -611,8 +597,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>16</string>
@@ -640,8 +625,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>17</string>
@@ -669,8 +653,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>18</string>
@@ -698,8 +681,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>19</string>
@@ -727,8 +709,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>20</string>
@@ -756,8 +737,7 @@ background-color: rgb(255, 255, 255);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius : 50;
-background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>21</string>
