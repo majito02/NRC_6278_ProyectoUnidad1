@@ -55,8 +55,18 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
                     self.nodo_11, self.nodo_12, self.nodo_13, self.nodo_14, self.nodo_15,
                     self.nodo_16, self.nodo_17, self.nodo_18, self.nodo_19, self.nodo_20,
                     self.nodo_21]
+        # Activacion de simulacion
+        self.simulacion_activada = 0
         # Paso de simulacion
-        self.paso_simulacion = 1 #Segundos
+        self.paso_simulacion = 300 #milisegundos
+        #Configurar reloj de simulacion
+        self.temporizador = QtCore.QTimer(self)
+        self.temporizador.setInterval(self.paso_simulacion) # cada 1000 ms / 1 segundo
+        #Evento de relos
+        self.temporizador.timeout.connect(self.simular_ruta)
+        self.temporizador.start()
+        self.nodos_simulacion = []
+        self.contador = 0
 
         #Eventos de los botones q reprentan los nodos
         self.nodo.clicked.connect(self.eleccion_puntos)
@@ -161,10 +171,20 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         [ruta, distancia]=self.grafo.obtener_ruta(int(self.nodo_inicial),int(self.nodo_final))
         print(ruta)
         print(distancia)
-        #Simulacion de ruta
-        self.simular_ruta(ruta,distancia)
-        #Creacion de Grafo
-        self.grafo = Grafo(21, self.bordes_nodos,dirigido=False)
+        # Arreglo de Botones
+        self.nodos_simulacion = []
+        # Verificar cada punto de ruta con cada nodo
+        for i in ruta:
+            for j in self.nodos:
+                if int(j.text()) == i and int(j.text()) != ruta[0]:
+                    self.nodos_simulacion.append(j)
+        self.simulacion_activada = 1
+        self.contador = 0
+        #Mostrar distancia en ventana
+        self.distancia.setText(str(round(distancia,2)))
+        #Mostrar ruta
+        self.ruta_contenedor.setText(str(ruta))
+        
         
     
     def reiniciar(self):
@@ -188,31 +208,33 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
             i.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.distancia.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.distancia.setText("")
+        self.ruta_contenedor.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.ruta_contenedor.setText("")
 
-    def simular_ruta(self, ruta, distancia):
+    def simular_ruta(self):
         '''
 		
         Simula ruta generado cambiando los colores de los nodos que pasan la ruta
+        Usa el evento de reloj
 
         Parametros
         ----------
-        ruta: Array
-            arreglo con todos los nodos de la mejor ruta
+        None
         Returno
         -------
         None
         
         '''
-        # Verificar cada punto de ruta con cada nodo
-        for i in ruta:
-            for j in self.nodos:
-                if int(j.text()) == i and int(j.text()) != ruta[0]:
-                    j.setStyleSheet("background-color: rgb(0, 0, 255);")
-                    #time.sleep(self.paso_simulacion)
-        #Mostrar distancia en ventana
-        self.distancia.setText(str(distancia))
-        # Resaltar etiqueta de distancia
-        self.distancia.setStyleSheet("background-color: rgb(0, 255, 0);")
+        if self.simulacion_activada == 1 and self.contador < len(self.nodos_simulacion):
+            self.nodos_simulacion[self.contador].setStyleSheet("background-color: rgb(0, 0, 255);")
+            self.contador +=1
+        if self.simulacion_activada == 1 and self.contador == len(self.nodos_simulacion):
+            # Resaltar etiqueta de distancia
+            self.distancia.setStyleSheet("background-color: rgb(0, 255, 0);")
+            self.ruta_contenedor.setStyleSheet("background-color: rgb(0, 255, 0);")
+            self.simulacion_activada = 0
+            self.contador = 0
+
 
 
 

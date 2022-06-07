@@ -44,7 +44,7 @@ class Ui_ventanaPrincipal(object): #Uso de object para no aceptar argumentos
         None
         
 		'''
-		# Da propiedades de la ventana principal
+		# Dar propiedades de la ventana principal
         ventanaPrincipal.setObjectName("ventanaPrincipal")
         ventanaPrincipal.resize(985, 600)
         ventanaPrincipal.setMinimumSize(QtCore.QSize(985, 600))
