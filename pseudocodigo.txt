@@ -1,0 +1,31 @@
+CLASE AGENTE: 
+    FUNCIÓN Constructor():
+        DEFINIR m_costo_acumulado = 0
+	  DEFINIR m_ubicacion_objetivo = ""
+	  DEFINIR resultado_esperado = {}
+
+   
+    FUNCIÓN calcularTrafico(ubicaion_objetivo,estadoA,estadoB,,,,estadoG):
+		SI ubicaion_objetivo ES IGUAL Quito target:
+			IMPRIMIR("La ubicación selecccionado fue Quito")
+			SI stadoA ES IGUAL 'Con trafico':
+				IMPRIMIR("La ubicación Quito tiene tráfico")
+				estado_campo['Quito'] = 'Sin Trafico'
+				coste_acumulador = coste_acumulador + 1 
+				IMPRIMIR("Costo actual {str(coste_acumulador)}")
+			SI stadoA ES IGUAL 'Sin Trafico':
+				IMPRIMIR("La ubicación Quito no tiene tráfico")
+				IMPRIMIR("Costo actual {str(coste_acumulador)}")
+		FIN SI
+
+		SI ubicaion_objetivo ES IGUAL Quito target:
+			IMPRIMIR("La ubicación selecccionado fue Quito")
+			SI stadoA ES IGUAL 'Con trafico':
+				IMPRIMIR("La ubicación Quito tiene tráfico")
+				estado_campo['Quito'] = 'Sin Trafico'
+				coste_acumulador = coste_acumulador + 1 
+				IMPRIMIR("Costo actual {str(coste_acumulador)}")
+			SI stadoA ES IGUAL 'Sin Trafico':
+				IMPRIMIR("La ubicación Quito no tiene tráfico")
+				IMPRIMIR("Costo actual {str(coste_acumulador)}")
+		FIN SI

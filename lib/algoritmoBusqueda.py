@@ -4,10 +4,10 @@ from queue import Queue
 # Declarar clase Grafo
 class Grafo:
     """
+    
     Clase para representar un grafo
-
+    
     ...
-
     Attributos
     ----------
     m_num_de_nodos : int
@@ -129,7 +129,7 @@ class Grafo:
         #Recorrer por la lista de adyacencia
         for llave in self.m_lista_adyacencia.keys():
             # Imprimir nodo
-            print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
+            print("nodo", llave, ": ", self.m_lista_adyacencia[llave])#se imprimo el resultaod 
 
     def buscar_dfs(self, inicio, objetivo, ruta = [], visitado = set()):
         """
@@ -150,15 +150,15 @@ class Grafo:
         -------
         Recorrido de nodos  [0 1 2 4 3 ...]
         """
-        ruta.append(inicio)
-        visitado.add(inicio)
+        ruta.append(inicio)#agregargar ruta 
+        visitado.add(inicio)#agregamos visitado 
         if inicio == objetivo:
-            return ruta
-        for (vecino, peso) in self.m_lista_adyacencia[inicio]:
-            if vecino not in visitado:
-                resultado= self.buscar_dfs(vecino, objetivo, ruta, visitado)
-                if resultado is not None:
-                    return resultado
+            return ruta#retorna la ruta si el objetivo inicio el igual al objetivo 
+        for (vecino, peso) in self.m_lista_adyacencia[inicio]:#recuperamos el vecino 
+            if vecino not in visitado:#si no fue visitado 
+                resultado = self.buscar_dfs(vecino, objetivo, ruta, visitado)
+                if resultado is not None:#En caos que el resultado sea null
+                    return resultado #retornamos el resultaod 
         ruta.pop()
         return None
 
@@ -176,7 +176,7 @@ class Grafo:
         -------
         Recorrido de nodos y peso total  [0 1 2 4 3 ...], peso_total
         """
-        peso_total =0
+        peso_total =0#variable acumulador 
         ruta = self.buscar_dfs(inicio, objetivo,[],set())
         for i in  range(len(ruta)-1):
             for nodo_vecino in self.m_lista_adyacencia[ruta[i]]:
@@ -200,6 +200,7 @@ class Grafo:
         -------
         Recorrido de nodos ( 0 1 2 4 3 ...)
         """
+        
         # Conjunto de nodos visitados para evitar bucles
         visitado = set()
         cola = Queue()
