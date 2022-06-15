@@ -78,26 +78,26 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
 
         #1.  ----Eventos de los botones q reprentan los nodos
         self.nodo.clicked.connect(self.eleccion_puntos)
-        self.nodo_2.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_3.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_4.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_5.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_6.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_7.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_8.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_9.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_10.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_11.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_12.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_13.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_14.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_15.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_16.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_17.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_18.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_19.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_20.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
-        self.nodo_21.clicked.connect(self.eleccion_puntos)#Evente del boton al dar clic  
+        self.nodo_2.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_3.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_4.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_5.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_6.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_7.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_8.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_9.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_10.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_11.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_12.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_13.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_14.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_15.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_16.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_17.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_18.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_19.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_20.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
+        self.nodo_21.clicked.connect(self.eleccion_puntos)#evento del boton al dar clic  
         # Evento de boton Generar Ruta
         self.boton_generar.clicked.connect(self.generar_ruta)
         #Evento de Boton Reiniciar
@@ -137,29 +137,30 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         
         '''
         #Verifica si se presiona un nodo por primera vez
+        #----------inicio=19 || fin=3-------------------
         if self.botones_presionados == 0:
             #Se guarda el nodo inicial del boton
-            self.nodo_inicial = int(self.sender().text())
+            self.nodo_inicial = int(self.sender().text())#inicio=19 -> valor
             #Se guardo el boton del nodo inicial
-            self.elemento_inicial = self.sender()
+            self.elemento_inicial = self.sender()#objeto boton=19
             #Aumentar conteo de botones presionados
             self.botones_presionados += 1
             #Cambiar color de fondo de nodo inicial
-            self.elemento_inicial.setStyleSheet("background-color: rgb(0, 255, 0);")
+            self.elemento_inicial.setStyleSheet("background-color: rgb(0, 255, 0);")#verde
         #Verifica si se presiona un nodo por segunda vez
         elif self.botones_presionados == 1:
             #Se guarda el nodo final
-            self.nodo_final =  int(self.sender().text())
+            self.nodo_final =  int(self.sender().text())#objetivo = 3 -> valor 
             #Se guardo el boton del nodo inicial
-            self.elemento_final = self.sender()
+            self.elemento_final = self.sender()#Objeto 3
             #Cambiar color de fondo de nodo inicial
-            self.elemento_final.setStyleSheet("background-color: rgb(255, 0, 0);")
+            self.elemento_final.setStyleSheet("background-color: rgb(255, 0, 0);")#rojo
             #Aumentar conteo de botones presionados
             self.botones_presionados += 1
             
 
         
-     #5 ....   
+     #5
     def generar_ruta(self):
         '''
 		
@@ -183,26 +184,32 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         distancia = 0#distancia 
         print(self.nodo_inicial, self.nodo_final)
         #--llamamos a la ruta y distancia y obetenenos la ruta
-        #5.   --primer valor me obtiene la ruta y el segundo la distancia 
+        #5.   --primer valor me obtiene la ruta y el segundo la distancia  19   -   3
         [ruta, distancia]=self.grafo.obtener_ruta(int(self.nodo_inicial),int(self.nodo_final))
-        print(ruta)
-        print(distancia)
+        #[[19, 17, 12, 11, 5, 3], 7.7700000000000005]
+        print(ruta)#[[19, 17, 12, 11, 5, 3]
+        print(distancia)# 7.7700000000000005
         
         
         # Arreglo de Botones
         self.nodos_simulacion = []#nodo simulacion no funciono 
         # Verificar cada punto de ruta con cada nodo
         for i in ruta:
+            print("ruta i",ruta)
             for j in self.nodos:
                 if int(j.text()) == i and int(j.text()) != ruta[0]:
                     self.nodos_simulacion.append(j)#simulacion que no funciono 
-        self.simulacion_activada = 1#Simulacion en proceso 
+        self.simulacion_activada = 1#Simulacion en proceso
+        
+        for i in self.nodos_simulacion:
+            print(i.text())# Botones 17,12,11,5,3 a pintar
+
         self.contador = 0
         
         #Mostrar distancia en ventana
-        self.distancia.setText(str(round(distancia,2)))
+        self.distancia.setText(str(round(distancia,2)))#7.7700000000000005
         #Mostrar ruta
-        self.ruta_contenedor.setText(str(ruta))#me guarda un arreglo de la rta
+        self.ruta_contenedor.setText(str(ruta))#[19, 17, 12, 11, 5, 3]
         
         
         
@@ -246,6 +253,8 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
         None
         
         '''
+        
+        #self.nodos_simulacion se ejecuata hasta cerrar el programa
         if self.simulacion_activada == 1 and self.contador < len(self.nodos_simulacion):
             self.nodos_simulacion[self.contador].setStyleSheet("background-color: rgb(0, 0, 255);")
             self.contador +=1
@@ -260,6 +269,8 @@ class Ui_ventanaPrincipal(QtWidgets.QMainWindow, Ui_ventanaPrincipal):
 #Correr programa si este es la raiz de ejecucion
 if __name__ == "__main__":
     # Evento de cierre de la ventana tomanod ruta de archivo ejecutado con sys
+    # grafo = Grafo()
+    # grafo.imprimir_lista_adyacente()
     app = QtWidgets.QApplication([])
     # Crear objeto ventana de la clase generada
     ventana_principal = Ui_ventanaPrincipal()

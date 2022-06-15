@@ -63,7 +63,8 @@ class Grafo:
         self.m_dirigido = dirigido
         self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}# Usamos un diccionario para implementar una lista de adyacencia      
         # Creacion de Arbol
-        self.crear_arbol(bordes)
+        self.crear_arbol(bordes)#primero en ejecutar
+        self.imprimir_lista_adyacente()
 
     def agregar_borde(self, nodo1, nodo2, peso=1):
         """
@@ -129,7 +130,8 @@ class Grafo:
         #Recorrer por la lista de adyacencia
         for llave in self.m_lista_adyacencia.keys():
             # Imprimir nodo
-            print("nodo", llave, ": ", self.m_lista_adyacencia[llave])#se imprimo el resultaod 
+            #se imprimo el resultaod 
+            print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
 
     def buscar_dfs(self, inicio, objetivo, ruta = [], visitado = set()):
         """
@@ -158,11 +160,13 @@ class Grafo:
             if vecino not in visitado:#si no fue visitado 
                 resultado = self.buscar_dfs(vecino, objetivo, ruta, visitado)
                 if resultado is not None:#En caos que el resultado sea null
+                    print("Busqueda DFS resultado ",resultado) # [19, 17, 12, 11, 5, 3]
                     return resultado #retornamos el resultaod 
         ruta.pop()
         return None
 
-    def obtener_ruta(self,inicio, objetivo):
+    def obtener_ruta(self,inicio, objetivo):# inicio = 19 y objetivo 3
+        
         """
         Devuelve la ruta y peso total de la busqueda
         Parametros
@@ -175,15 +179,26 @@ class Grafo:
         Retorna
         -------
         Recorrido de nodos y peso total  [0 1 2 4 3 ...], peso_total
-        """
+        """ 
         peso_total =0#variable acumulador 
         ruta = self.buscar_dfs(inicio, objetivo,[],set())
-        for i in  range(len(ruta)-1):
+        #Recuperamos la ruta # [19, 17, 12, 11, 5, 3]
+        #len(ruta)-1 -> 6-1 = 5
+        for i in  range(len(ruta)-1):#5 veces
+            #19 - 
             for nodo_vecino in self.m_lista_adyacencia[ruta[i]]:
+                print("peso_total 17", self.m_lista_adyacencia[ruta[1]])
+                #nodo 19 :  {(21, 2.9), (17, 1.62), (18, 4.72)}
+                #nodo 17 :  {(12, 1.5), (13, 4.49), (5, 2.06), (19, 1.62), (18, 3.88)}
+                #nodo 12 :  {(11, 1), (17, 1.5), (5, 1.65)}
+                #nodo 11 :  {(12, 1), (5, 1.02), (4, 1.96)}
+                #nodo 5 :  {(11, 1.02), (3, 2.63), (12, 1.65), (13, 3.82), (6, 3.2), (17, 2.06)}
+                #nodo 3 :  {(5, 2.63), (1, 3.64), (4, 2.57), (6, 2.39)}
+                # print("self.m_lista_adyacencia[ruta[i]",self.m_lista_adyacencia[ruta[i]])
                 if nodo_vecino[0] == ruta[i+1]:
                     peso_total += nodo_vecino[1]
+        print("[ruta,peso_total]",[ruta,peso_total])# [[19, 17, 12, 11, 5, 3], 7.7700000000000005]
         return [ruta,peso_total]
-
 
     def buscar_bfs(self, nodo_inicial,objetivo):
         """
@@ -226,5 +241,11 @@ class Grafo:
                     cola.put(siguiente_nodo)
                     #marcarlo como visitado
                     visitado.add(siguiente_nodo)
+                    
+                    
+                    
+if __name__ == "__main__":
+    grafo = Grafo()
+    grafo.imprimir_lista_adyacente()
 
 
